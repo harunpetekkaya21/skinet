@@ -1,0 +1,20 @@
+footer {
+ 
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /*flex items will wrap onto multiple lines, from top to bottom.*/
+  padding: 20px;
+}
+
+
+
+@media all and (max-width: 600px) {
+
+  /*style if screen size is <600px*/
+  .section-buttom {
+    flex-direction: column;
+  }
+
+
+}

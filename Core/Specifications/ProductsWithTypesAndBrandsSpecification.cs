@@ -3,17 +3,17 @@ using Core.Entities;
 
 namespace Core.Specifications
 {
-    public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
+    public class ProductsWithTypesAndCategoriesSpecification : BaseSpecification<Product>
     {
-        public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productParams)
+        public ProductsWithTypesAndCategoriesSpecification(ProductSpecParams productParams)
         : base(x =>
         (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
-            (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
+            (!productParams.CategoryId.HasValue || x.ProductCategoryId == productParams.CategoryId) &&
             (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
         )
         {
             AddInclude(x => x.ProductType);
-            AddInclude(x => x.ProductBrand);
+            AddInclude(x => x.ProductCategory);
             AddOrderBy(x => x.Name);
             ApplyPaging(productParams.PageSize * (productParams.PageIndex - 1), productParams.PageSize);
 
@@ -34,10 +34,10 @@ namespace Core.Specifications
             }
         }
 
-        public ProductsWithTypesAndBrandsSpecification(int id) : base(x => x.Id == id)
+        public ProductsWithTypesAndCategoriesSpecification(int id) : base(x => x.Id == id)
         {
             AddInclude(x => x.ProductType);
-            AddInclude(x => x.ProductBrand);
+            AddInclude(x => x.ProductCategory);
         }
     }
 }

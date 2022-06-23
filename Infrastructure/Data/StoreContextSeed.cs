@@ -10,14 +10,14 @@ namespace Infrastructure.Data
         {
             try
             {
-                if (!context.ProductBrands.Any())
+                if (!context.ProductCategories.Any())
                 {
-                    var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/Brand.json");
+                    var categoriesData = File.ReadAllText("../Infrastructure/Data/SeedData/Category.json");
 
-                    var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
-                    foreach (var item in brands)
+                    var categories = JsonSerializer.Deserialize<List<ProductCategory>>(categoriesData);
+                    foreach (var item in categories)
                     {
-                        context.ProductBrands.Add(item);
+                        context.ProductCategories.Add(item);
                     }
 
                     await context.SaveChangesAsync();
