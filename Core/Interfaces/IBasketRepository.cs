@@ -9,3 +9,4 @@ namespace Core.Interfaces
         Task<bool> DeleteBasketAsync(string basketId);
     }
 }
+
